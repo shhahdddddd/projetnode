@@ -12,7 +12,8 @@ import {
     GiEarthAsiaOceania,
     AiOutlineCar,
     MdOutlineAttractions,
-    RiTaxiWifiLine
+    RiTaxiWifiLine,
+    MdDashboard
 } from '../../utils/icons'
 import {Button} from '../core'
 import {useAppDispatch, useAppSelector} from '../../store/hooks'
@@ -57,6 +58,16 @@ const Header = () => {
             link: '/user/wishlist'
         }
     ]
+
+    // Add dashboard for admin
+    if (user?.email === 'admin@gmail.com') {
+        accountMenu.unshift({
+            icon: <MdDashboard/>,
+            name: 'Dashboard',
+            link: '/admin/dashboard'
+        })
+    }
+
     const menu = [
         {
             icon: <BiBed/>,
@@ -66,27 +77,27 @@ const Header = () => {
         {
             icon: <MdOutlineAirplaneTicket/>,
             name: 'Flights',
-            link: '/'
+            link: '/flights'
         },
         {
             icon: <GiEarthAsiaOceania/>,
             name: 'Flight + Hotel',
-            link: '/'
+            link: '/packages'
         },
         {
             icon: <AiOutlineCar/>,
             name: 'Car rentals',
-            link: '/'
+            link: '/cars'
         },
         {
             icon: <MdOutlineAttractions/>,
             name: 'Attractions',
-            link: '/'
+            link: '/attractions'
         },
         {
             icon: <RiTaxiWifiLine/>,
             name: 'Airport taxis',
-            link: '/'
+            link: '/taxis'
         }
     ]
 
